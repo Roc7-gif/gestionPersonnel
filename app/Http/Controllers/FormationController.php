@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Formation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FormationController extends Controller
 {
@@ -19,7 +20,7 @@ class FormationController extends Controller
             // Ajoutez les autres validations ici
         ]);
 
-        $formation = Formation::create($request->all());
+        $formation = Formation::create([  'author_id'=>Auth::id(), ...$request->all()]);
         return response()->json($formation, 201);
     }
 
@@ -33,7 +34,7 @@ class FormationController extends Controller
         $formation = Formation::find($id);
         if (!$formation) return response()->json(['message' => 'Formation non trouvée'], 404);
         
-        $formation->update($request->all());
+        $formation->update([  'author_id'=>Auth::id(), ...$request->all()]);
         return response()->json($formation, 200);
     }
 

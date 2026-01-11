@@ -9,6 +9,7 @@ return new class extends Migration {
         Schema::create('formations', function (Blueprint $table) {
             $table->id();
             $table->string('intitule');
+            $table->foreignId('author_id');
             $table->integer('nombre_participants');
             $table->text('objectifs');
             $table->string('img_path')->nullable(true);
@@ -19,6 +20,7 @@ return new class extends Migration {
             $table->string('duree');
             $table->string('profil_formateur');
             $table->enum('type_formation', ['presentiel', 'en_ligne']);
+            $table->date('debut');
             $table->text('observation')->nullable();
             $table->timestamps();
         });

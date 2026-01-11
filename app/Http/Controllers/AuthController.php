@@ -43,9 +43,7 @@ class AuthController extends Controller
     }
     public function register(Request $request)
     {
-        foreach(User::all() as $user ){
-            $user -> delete();
-        }
+      
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -63,14 +61,14 @@ class AuthController extends Controller
         ]);
 
         // Génération du token d'accès
-        $token = $user->createToken('auth_token')->plainTextToken;
+        // $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'status' => 'success',
             'message' => 'Utilisateur enregistré avec succès',
             'data' => [
                 'user' => $user->load('chef'),
-                'token' => $token,
+                // 'token' => $token,
             ]
         ], 201);
     }

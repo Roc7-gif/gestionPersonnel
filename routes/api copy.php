@@ -20,11 +20,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Gestion de la hiérarchie (Admin ou RH)
     Route::apiResource('users', UserController::class);
-    // Route::get('/users/{id}/subordonnes', action: [UserController::class, 'subordonnes']);
 
     // Workflow des Formations
     Route::get('/mes-demandes', [DemandeFormationController::class, 'mesDemandes']);
-    Route::get('/a-valider', [DemandeFormationController::class, 'demandesAValider']);
     
     Route::post('/demande_formations/validation', [DemandeFormationController::class, 'verification']);
     
@@ -35,9 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 // Inscription
 Route::post('/formations/inscription', [FormationSuiviController::class, 'store']);
-
-// Voir les inscrits d'une formation
-// Route::get('/formations/{id}/participants', [FormationSuiviController::class, 'index']);
+// formation suivies
 Route::get('/my/formations', [FormationSuiviController::class, 'getFormationsByUser']);
 // Se désinscrire
 Route::delete('/formations/{formationId}/participants', [FormationSuiviController::class, 'destroy']);

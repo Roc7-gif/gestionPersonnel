@@ -20,6 +20,12 @@ class Formation extends Model
         'duree',
         'profil_formateur',
         'type_formation',
-        'observation'
+        'debut',
+        'observation',
+        "author_id",
     ];
+
+    public function author(){
+        return  $this->belongsTo(User::class , 'author_id'); 
+    }
 }

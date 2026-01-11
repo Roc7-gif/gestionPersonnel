@@ -53,4 +53,16 @@ class User extends Authenticatable
     public function subordonnes() {
     return $this->hasMany(User::class, 'parent_id');
 }
+public function demandeFormations (){
+        return $this->hasMany(DemandeFormation::class, 'user_create_id'); 
+}
+public function demandeFormationsStatus (){
+        return $this->hasMany(DemandeFormationsStatus::class, 'user_id'); 
+}
+public function formations (){
+        return $this->hasMany(Formation::class, 'author_id'); 
+}
+public function formationsSuivies() {
+    return $this->belongsToMany(Formation::class, 'formations_suivis');
+}
 }
