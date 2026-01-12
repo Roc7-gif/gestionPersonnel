@@ -9,19 +9,15 @@ return new class extends Migration {
         Schema::create('formations', function (Blueprint $table) {
             $table->id();
             $table->string('intitule');
-            $table->foreignId('author_id');
-            $table->integer('nombre_participants');
+            $table->string('author');
             $table->text('objectifs');
             $table->string('img_path')->nullable(true);
-            $table->boolean('is_interieur')->default(true);
-            $table->text('justification_choix');
             $table->string('profils_beneficiaires');
-            $table->string('module_nom');
-            $table->string('duree');
             $table->string('profil_formateur');
             $table->enum('type_formation', ['presentiel', 'en_ligne']);
             $table->date('debut');
-            $table->text('observation')->nullable();
+            $table->date('fin');
+            $table->foreignId('demande_formation_id')->constrained();
             $table->timestamps();
         });
     }

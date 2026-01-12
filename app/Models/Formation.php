@@ -10,22 +10,24 @@ class Formation extends Model
 
     protected $fillable = [
         'intitule',
-        'nombre_participants',
+        'author',
         'objectifs',
-        'is_interieur',
         'img_path',
-        'justification_choix',
         'profils_beneficiaires',
-        'module_nom',
-        'duree',
         'profil_formateur',
         'type_formation',
         'debut',
-        'observation',
-        "author_id",
+        'fin',
+        'demandeformation_id'
     ];
 
-    public function author(){
-        return  $this->belongsTo(User::class , 'author_id'); 
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
     }
+    public function demandeformation()
+    {
+        return $this->belongsTo(DemandeFormation::class, 'demandeformation_id');
+    }
+
 }

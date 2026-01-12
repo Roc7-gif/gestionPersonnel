@@ -48,7 +48,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed', // 'confirmed' attend un champ password_confirmation
-            'parent_id' => 'nullable', // Le chef doit déjà exister en base
+            'parent_id' => 'max:255', // Le chef doit déjà exister en base
         ]);
 
         // Création de l'utilisateur

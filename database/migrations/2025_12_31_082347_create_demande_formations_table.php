@@ -14,18 +14,12 @@ return new class extends Migration
     Schema::create('demande_formations', function (Blueprint $table) {
         $table->id();
         $table->string('intitule');
-        $table->integer('nombre_participants');
         $table->text('objectifs');
-        $table->boolean('is_interieur')->default(true); // true = Intérieur, false = Extérieur
-        $table->text('justification_choix');
         $table->string('profils_beneficiaires');
-        
-        // Détails du module
-        $table->string('module_nom');
-        $table->string('duree');
-        $table->string('profil_formateur');
+        $table->date('debut');
+        $table->date('fin');
         $table->enum('type_formation', ['presentiel', 'en_ligne']);
-        $table->text('observation')->nullable();
+        $table->text('img_path')->nullable();
         $table->foreignId('user_create_id')->nullable();
         $table->foreignId('user_actuel_id')->nullable();
         $table->timestamps(); 

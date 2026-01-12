@@ -36,9 +36,5 @@ Route::middleware('auth:sanctum')->group(function () {
 // Inscription
 Route::post('/formations/inscription', [FormationSuiviController::class, 'store']);
 
-// Voir les inscrits d'une formation
-// Route::get('/formations/{id}/participants', [FormationSuiviController::class, 'index']);
-Route::get('/my/formations', [FormationSuiviController::class, 'getFormationsByUser']);
-// Se désinscrire
 Route::delete('/formations/{formationId}/participants', [FormationSuiviController::class, 'destroy']);
 });
