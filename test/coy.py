@@ -1,6 +1,6 @@
 import requests
 
-data = requests.post('http://127.0.0.1:8000/api/login',json =  {
+data = requests.post('https://gestionpersonnel.onrender.com/api/register',json =  {
                          'name' :'rc',
                          'email' :'rc@gmail.com',
                          'password' :'zmzzmzzmcz',
