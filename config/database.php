@@ -104,7 +104,7 @@ return [
     'sslmode' => env('DB_SSLMODE', 'require'), // Modifié ici
     'options' => [
         // Cette ligne permet de passer l'Endpoint ID à Neon
-        PDO::PGSQL_ATTR_DISABLE_PREPARES => true,
+        // PDO::PGSQL_ATTR_DISABLE_PREPARES => true,
     ],
     // Si l'erreur d'Endpoint persiste, ajoutez l'option directement dans le DSN via :
     'common_name' => env('DB_OPTIONS'), 
